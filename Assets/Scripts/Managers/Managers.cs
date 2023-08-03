@@ -55,8 +55,8 @@ public class Managers : MonoBehaviour
             s_instance = target.GetComponent<Managers>();
 
             s_instance.data.Init();
-            s_instance.pool.Init();
-            s_instance.sound.Init();
+            //s_instance.pool.Init();
+            //s_instance.sound.Init();
         }
     }
 
