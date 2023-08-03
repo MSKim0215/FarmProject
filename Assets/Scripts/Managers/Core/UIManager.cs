@@ -7,6 +7,12 @@ public class UIManager
     private Stack<UI_Popup> popupStack = new Stack<UI_Popup>();
     private Dictionary<string, UI_Scene> sceneDict = new Dictionary<string, UI_Scene>();
     private int order = 10;      // 현재 캔버스의 오더
+    private Camera uiCam;
+
+    public void Init()
+    {
+        uiCam = GameObject.Find("UI Camera").GetComponent<Camera>();
+    }
 
     public T GetScene<T>() where T : UI_Scene
     {
@@ -31,7 +37,9 @@ public class UIManager
     public void SetCanvas(GameObject _target, bool _sort = true)
     {
         Canvas canvas = Util.GetOrAddComponent<Canvas>(_target);
-        canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        //canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        canvas.renderMode = RenderMode.ScreenSpaceCamera;
+        canvas.worldCamera = uiCam;
         canvas.overrideSorting = true;
 
         if (_sort)

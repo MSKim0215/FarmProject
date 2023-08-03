@@ -24,7 +24,9 @@ public class InputManager
                 Plowed plowed = hit.collider.GetComponent<Plowed>();
                 if (plowed?.plowed_crops_type == Plowed.Plowed_Crops.None)
                 {   // plowed 클래스가 존재하고 타입이 없는 상태라면
-                    plowed?.Plant(Plowed.Plowed_Crops.Carrot);      // 당근을 심는다.
+                    UI_CreateCrops createCropsPopup = Object.FindObjectOfType<UI_CreateCrops>();                        // 현재 열려있는 팝업이 있는지 체크한다.
+                    if (createCropsPopup == null) Managers.UI.ShowPopupUI<UI_CreateCrops>().SetTargetPlowed(plowed);    // 현재 열려있는 팝업이 없다면 팝업을 활성화한다.
+                    else Managers.UI.ClosePopupUI();                                                                    // 현재 열려있는 팝업이 있다면 팝업을 비활성화한다.
                 }           
             }
         }

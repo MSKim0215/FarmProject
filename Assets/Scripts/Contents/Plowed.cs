@@ -6,7 +6,7 @@ public class Plowed : MonoBehaviour
 {
     public enum Plowed_Crops
     {
-        Carrot, None
+        Carrot, Cabbage, None
     }
 
     private Transform planted_right, planted_left;        // 작물을 심는 위치
@@ -42,6 +42,7 @@ public class Plowed : MonoBehaviour
         switch(crops)
         {
             case Plowed_Crops.Carrot: return "Crops/Planted/PlantedCarrotPrefab";
+            case Plowed_Crops.Cabbage: return "Crops/Planted/PlantedCabbagePrefab";
         }
         return null;
     }
