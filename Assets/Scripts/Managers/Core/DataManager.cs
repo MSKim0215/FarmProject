@@ -17,7 +17,7 @@ public class DataManager
     /// </summary>
     public void Init()
     {
-        
+        StatDict = LoadJson<DataContents.StatData, int, DataContents.Stat>("StatData").MakeDict();
     }
 
     /// <summary>
