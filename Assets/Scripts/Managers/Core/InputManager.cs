@@ -22,10 +22,9 @@ public class InputManager
                 Debug.DrawRay(rayStartPosition, rayEndPosition - rayStartPosition, Color.red, duration);        // Debug.DrawRay를 사용하여 레이를 그림
 
                 Plowed plowed = hit.collider.GetComponent<Plowed>();
-                if(plowed != null)
-                {
-                    plowed.Plant("Crops/Planted/PlantedCarrotPrefab");
-                    Debug.Log("이것은 밭입니다.");
+                if (plowed?.plowed_crops_type == Plowed.Plowed_Crops.None)
+                {   // plowed 클래스가 존재하고 타입이 없는 상태라면
+                    plowed?.Plant(Plowed.Plowed_Crops.Carrot);      // 당근을 심는다.
                 }           
             }
         }

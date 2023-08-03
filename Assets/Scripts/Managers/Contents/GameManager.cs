@@ -14,11 +14,11 @@ public class GameManager
 
     /// <summary>
     /// 게임 오브젝트 스폰 함수
+    /// [Made_김민섭 23.08.03]
     /// </summary>
     /// <param name="_type">오브젝트 타입</param>
     /// <param name="_path">오브젝트 경로</param>
     /// <param name="_parent">생성될 위치</param>
-    /// <returns></returns>
     public GameObject Spawn(Define.WorldObject _type, string _path, Transform _parent = null)
     {
         GameObject prefab = Managers.Resource.Instantiate(_path, _parent);
