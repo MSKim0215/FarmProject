@@ -6,11 +6,14 @@ public class Plowed : MonoBehaviour
 {
     public enum Plowed_Crops
     {
-        Carrot, Cabbage, None
+        Carrot = 100, Cabbage, None
     }
 
     private Transform planted_right, planted_left;        // 작물을 심는 위치
+ 
+    public float growTime;                               // 현재 성장 시간
 
+    public DataContents.Stat Planted_Stat { private set; get; }     // 작물 스탯
     public Plowed_Crops plowed_crops_type { private set; get; } = Plowed_Crops.None;        // 작물 타입
 
     private void Awake()
@@ -28,9 +31,19 @@ public class Plowed : MonoBehaviour
         if (plowed_crops_type != Plowed_Crops.None) return;
         plowed_crops_type = crops;
 
+        Planted_Stat = GetStat(crops);                  // 해당 타입의 작물 스탯 정보 가져오기
+
         string path = GetPath(plowed_crops_type);       // 해당 타입의 작물 프리팹 경로 가져오기
         Managers.Resource.Instantiate(path, planted_left);
         Managers.Resource.Instantiate(path, planted_right);
+
+        // UI 생성
+        Managers.UI.MakeWordSpaceUI<UI_GrowBar>(transform);
+    }
+
+    private DataContents.Stat GetStat(Plowed_Crops crops)
+    {
+        return Managers.Data.StatDict[(int)crops];
     }
 
     /// <summary>
