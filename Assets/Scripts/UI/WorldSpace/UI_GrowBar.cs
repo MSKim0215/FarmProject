@@ -49,15 +49,16 @@ public class UI_GrowBar : UI_Base
         transform.rotation = gameViewCamera.transform.rotation;
 
         // 작물 성장 시간 타이머 계산
-        if(plowed.growTime < plowed.Planted_Stat.growTimeMax)
+        if(!plowed.isGrow && plowed.growTime < plowed.Planted_Stat.growTimeMax)
         {
             plowed.growTime += Time.unscaledDeltaTime;
             GetImage((int)Images.Img_Main).fillAmount = plowed.growTime / plowed.Planted_Stat.growTimeMax;
 
-            //if(plowed.growTime >= plowed.Planted_Stat.growTimeMax)
-            //{
-            //    plowed.growTime = 0f;
-            //}
+            if (plowed.growTime >= plowed.Planted_Stat.growTimeMax)
+            {
+                plowed.growTime = 0f;
+                plowed.isGrow = true;
+            }
         }
     }
 }

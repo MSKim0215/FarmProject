@@ -34,7 +34,9 @@ public class Managers : MonoBehaviour
     #endregion
 
     #region Contents
+    private StorageManager storage = new StorageManager();
 
+    public static StorageManager Storage => Instance.storage;
     #endregion
 
     private void Start()
