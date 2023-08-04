@@ -38,5 +38,6 @@ public class UI_CreateCrops : UI_Popup
     private void OnCreate(Plowed.Plowed_Crops crops)
     {
         targetPlowed.Plant(crops);
+        ClosePopupUI();
     }
 }

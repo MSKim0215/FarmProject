@@ -25,6 +25,7 @@ public class Plowed : MonoBehaviour
     /// </summary>
     public void Plant(Plowed_Crops crops)
     {
+        if (plowed_crops_type != Plowed_Crops.None) return;
         plowed_crops_type = crops;
 
         string path = GetPath(plowed_crops_type);       // 해당 타입의 작물 프리팹 경로 가져오기
