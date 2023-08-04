@@ -23,13 +23,13 @@ public class UI_CreateCrops : UI_Popup
         BindEvent(GetButton((int)Buttons.Btn_Carrot).gameObject, 
         (PointerEventData data) =>
         {   // 당근 심기
-            OnCreate((Plowed.Plowed_Crops)(int)Buttons.Btn_Carrot);
+            OnCreate(Plowed.Plowed_Crops.Carrot);
         });
 
         BindEvent(GetButton((int)Buttons.Btn_Cabbage).gameObject,
         (PointerEventData data) =>
         {   // 양배추 심기
-            OnCreate((Plowed.Plowed_Crops)(int)Buttons.Btn_Cabbage);
+            OnCreate(Plowed.Plowed_Crops.Cabbage);
         });
     }
 
@@ -38,5 +38,6 @@ public class UI_CreateCrops : UI_Popup
     private void OnCreate(Plowed.Plowed_Crops crops)
     {
         targetPlowed.Plant(crops);
+        ClosePopupUI();
     }
 }
